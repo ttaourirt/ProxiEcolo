@@ -4,7 +4,165 @@
 <head>
     <title>Formulaire d'inscription</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/doc.css">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: green;
+        }
+        
+        .myBtn {
+            background-color: #1c87c9;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            opacity: 0.8;
+            position: fixed;
+        }
+        /* The Modal (background) */
+        
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+            -webkit-animation-name: fadeIn;
+            /* Fade in the background */
+            -webkit-animation-duration: 0.4s;
+            animation-name: fadeIn;
+            animation-duration: 0.4s
+        }
+        /* Modal Content */
+        
+        .modal-content {
+            position: fixed;
+            bottom: 0;
+            background-color: #fefefe;
+            width: 100%;
+            -webkit-animation-name: slideIn;
+            -webkit-animation-duration: 0.4s;
+            animation-name: slideIn;
+            animation-duration: 0.4s
+        }
+        /* The Close Button */
+        
+        .close {
+            color: white;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .btn {
+            background-color: #8ebf42;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+        
+        .btncancel {
+            background-color: #cc0000;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+        
+        .modal-header {
+            padding: 2px 16px;
+            background-color: #5cb85c;
+            color: white;
+        }
+        
+        .modal-body {
+            padding: 2px 16px;
+        }
+        
+        .modal-footer {
+            padding: 2px 16px;
+            background-color: #5cb85c;
+            color: white;
+        }
+        
+        .blue {
+            padding-bottom: 25px;
+        }
+        
+        .subscription {
+            display: block;
+            background-color: #1c87c9;
+        }
+        /* Add Animation */
+        
+        @-webkit-keyframes slideIn {
+            from {
+                bottom: -300px;
+                opacity: 0
+            }
+            to {
+                bottom: 0;
+                opacity: 1
+            }
+        }
+        
+        @keyframes slideIn {
+            from {
+                bottom: -300px;
+                opacity: 0
+            }
+            to {
+                bottom: 0;
+                opacity: 1
+            }
+        }
+        
+        @-webkit-keyframes fadeIn {
+            from {
+                opacity: 0
+            }
+            to {
+                opacity: 1
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0
+            }
+            to {
+                opacity: 1
+            }
+        }
+    </style>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Optional theme -->
@@ -16,26 +174,42 @@
 </head>
 
 <body>
-    <div class="open-btn">
-        <button class="open-button" onclick="openForm()"><strong>Se connecter</strong></button>
-    </div>
-    <div class="login-popup">
-        <div class="form-popup" id="popup-Form">
-            <form class="form-container">
-                <h2>Veuillez vous connecter</h2>
-                <label for="email">
+    <h2>Title connexion</h2>
+
+    <!-- Trigger/Open The Modal -->
+    <button id="myBtn" class="myBtn">Connexion</button>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Connexion a votre compte</h2>
+            </div>
+            <div class="modal-body">
+                <form class="form-container">
+                    <h2>Veuillez vous connecter</h2>
+                    <label for="email">
         <strong>E-mail</strong>
         </label>
-                <input type="text" placeholder="Votre Email" name="email" required>
-                <label for="psw">
+                    <input type="text" placeholder="Votre Email" name="email" required>
+                    <label for="psw">
         <strong>Mot de passe</strong>
         </label>
-                <input type="password" placeholder="Votre mot de passe" name="psw" required>
-                <button type="submit" class="btn">Se connecter</button>
-                <button type="submit" class="btn cancel" onclick="closeForm()">Annuler</button>
-            </form>
+                    <input type="password" placeholder="Votre mot de passe" name="psw" required>
+                    <button type="submit" class="btn">Se connecter</button>
+                    <button type="submit" class="btncancel">Annuler</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <h3>Ne communiquez votre Mot de passe a personne !</h3>
+            </div>
         </div>
     </div>
+
+    <div class="blue"></div>
     <div class="subscription">
         <h1>Le Formulaire d'inscription</h1>
 
@@ -60,48 +234,76 @@
 
             <input type='submit' value='valider' id='validate'>
         </form>
-        <script>
-            var formValid = document.getElementsByID('validate');
-            formValid.addEventListener('click', validation);
+    </div>
+    <script>
+        var formValid = document.getElementById('validate');
+        var nom = document.getElementById('nom');
+        var prenom = document.getElementById('prenom');
+        var mail = document.getElementById('mail');
+        var password = document.getElementById('pass');
+        var cpassword = document.getElementById('cpass');
+        formValid.addEventListener('click', validation);
+        window.onload = function() {
+            // your code 
+        };
 
-            function validation(event) {
+        function validation(event) {
 
-                var nom = document.getElementsByID('nom');
-                var prenom = document.getElementsByID('prenom');
-                var mail = document.getElementsByID('mail');
-                var password = document.getElementsByID('pass');
-                var cpassword = document.getElementsByID('cpass');
-                //Si le Champ est vide
-                if (nom.validity.valueMissing || prenom.validity.valueMissing || mail.validity.valueMissing || password.validity.valueMissing || cpassword.validity.valueMissing) {
-                    event.preventDefault();
-                    alert("vous n'avez pas rempli toutes les cases correctement");
+            //Si le Champ est vide
+            if (nom.validity.valueMissing || prenom.validity.valueMissing || mail.validity.valueMissing || password.validity.valueMissing || cpassword.validity.valueMissing) {
+                event.preventDefault();
+                alert("vous n'avez pas rempli toutes les cases correctement");
 
+            } else {
+                document.f.submit();
+            }
+
+            function validate() {
+
+                var a = document.getElementById("pass").value;
+                var b = document.getElementById("cpass").value;
+
+                if (a != b) {
+                    window.alert("Les mots de passe ne correspondent pas.");
+                    return false;
                 } else {
                     document.f.submit();
                 }
-
-                function validate() {
-
-                    var a = document.getElementById("pass").value;
-                    var b = document.getElementById("cpass").value;
-
-                    if (a != b) {
-                        alert("Les mots de passe ne correspondent pas.");
-                        return false;
-                    } else {
-                        document.f.submit();
-                    }
-                }
-
-                function openForm() {
-                    document.getElementById("popup-Form").style.display = "block";
-                }
-
-                function closeForm() {
-                    document.getElementById("popup-Form").style.display = "none";
-                }
             }
-        </script>
+        }
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        var cancel = document.getElementsByClassName("btncancel");
+
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        cancel.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
+
+
 
 </html>
