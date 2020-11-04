@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Formulaire d'inscription</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/doc.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="open-btn">
+        <button class="open-button" onclick="openForm()"><strong>Se connecter</strong></button>
+    </div>
+    <div class="login-popup">
+        <div class="form-popup" id="popup-Form">
+            <form class="form-container">
+                <h2>Veuillez vous connecter</h2>
+                <label for="email">
+        <strong>E-mail</strong>
+        </label>
+                <input type="text" placeholder="Votre Email" name="email" required>
+                <label for="psw">
+        <strong>Mot de passe</strong>
+        </label>
+                <input type="password" placeholder="Votre mot de passe" name="psw" required>
+                <button type="submit" class="btn">Se connecter</button>
+                <button type="submit" class="btn cancel" onclick="closeForm()">Annuler</button>
+            </form>
+        </div>
+    </div>
+    <div class="subscription">
+        <h1>Le Formulaire d'inscription</h1>
+
+        <form name="f" method="POST" onSubmit="validate()">
+
+
+            <label for='nom'>Veuillez entrer votre Nom :</label>
+            <input type='text' name='nom' id='nom' placeholder=' Nom' required><br>
+
+            <label for='prenom'>Veuillez entrer votre Prenom :</label>
+            <input type='text' name='prenom' id='prenom' placeholder=' Prenom' required><br>
+
+            <label for='mail'>Veuillez entrer votre Mail :</label>
+            <input type='email' name='mail' id='mail' placeholder=' Votre E-mail' required><br>
+
+            <label for='pass'>Veuillez entrer votre Mot de passe</label>
+            <input type='password' name='password' id='pass' placeholder=' Mot de passe (8 caractères minimum)' minlength="8" required><br>
+
+
+            <label for='cpass'> Veuillez confirmer votre mot de passe</label>
+            <input type='password' name='cpassword' id='cpass' placeholder=' Confirmation du Mot de passe' minlength="8" required><br>
+
+            <input type='submit' value='valider' id='validate'>
+        </form>
+        <script>
+            var formValid = document.getElementsByID('validate');
+            formValid.addEventListener('click', validation);
+
+            function validation(event) {
+
+                var nom = document.getElementsByID('nom');
+                var prenom = document.getElementsByID('prenom');
+                var mail = document.getElementsByID('mail');
+                var password = document.getElementsByID('pass');
+                var cpassword = document.getElementsByID('cpass');
+                //Si le Champ est vide
+                if (nom.validity.valueMissing || prenom.validity.valueMissing || mail.validity.valueMissing || password.validity.valueMissing || cpassword.validity.valueMissing) {
+                    event.preventDefault();
+                    alert("vous n'avez pas rempli toutes les cases correctement");
+
+                } else {
+                    document.f.submit();
+                }
+
+                function validate() {
+
+                    var a = document.getElementById("pass").value;
+                    var b = document.getElementById("cpass").value;
+
+                    if (a != b) {
+                        alert("Les mots de passe ne correspondent pas.");
+                        return false;
+                    } else {
+                        document.f.submit();
+                    }
+                }
+
+                function openForm() {
+                    document.getElementById("popup-Form").style.display = "block";
+                }
+
+                function closeForm() {
+                    document.getElementById("popup-Form").style.display = "none";
+                }
+            }
+        </script>
+</body>
+
+</html>
